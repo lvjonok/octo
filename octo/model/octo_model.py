@@ -296,12 +296,12 @@ class OctoModel:
         logging.debug(
             "Model was trained with observations: %s",
             flax.core.pretty_repr(
-                jax.tree_map(jnp.shape, example_batch["observation"])
+                jax.tree.map(jnp.shape, example_batch["observation"])
             ),
         )
         logging.debug(
             "Model was trained with tasks: %s",
-            flax.core.pretty_repr(jax.tree_map(jnp.shape, example_batch["task"])),
+            flax.core.pretty_repr(jax.tree.map(jnp.shape, example_batch["task"])),
         )
 
         # load dataset statistics
@@ -309,7 +309,7 @@ class OctoModel:
             tf.io.gfile.join(checkpoint_path, "dataset_statistics.json"), "r"
         ) as f:
             dataset_statistics = json.load(f)
-            dataset_statistics = jax.tree_map(
+            dataset_statistics = jax.tree.map(
                 np.array, dataset_statistics, is_leaf=lambda x: not isinstance(x, dict)
             )
 
