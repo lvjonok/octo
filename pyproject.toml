@@ -18,8 +18,8 @@ dependencies = [
     "moviepy>=2.2.1",
     "opencv-python>=4.11.0.86",
     "protobuf==3.20.3",
-    "tensorflow==2.15.0",
-    "tensorflow-probability==0.23.0",
+    "tensorflow==2.18.0",
+    "tensorflow-probability==0.24.0",
     "tqdm>=4.67.1",
     "transformers>=4.53.0",
 ]
@@ -28,8 +28,11 @@ dependencies = [
 requires = ["setuptools>=42"]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools]
+packages = ["octo"]
+
 [tool.uv.sources]
-dlimp = { git = "https://github.com/kvablack/dlimp", rev = "5edaa4691567873d495633f2708982b42edf1972" }
+dlimp = { path = "./third_party/dlimp" }
 octo = { workspace = true }
 
 [tool.uv.workspace]
